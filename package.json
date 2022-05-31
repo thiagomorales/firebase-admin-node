@@ -50,7 +50,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/firebase/firebase-admin-node"
+    "url": "git+https://github.com/thiagomorales/firebase-admin-node.git"
   },
   "main": "lib/index.js",
   "files": [
@@ -252,5 +252,12 @@
     "ts-node": "^10.2.0",
     "typescript": "^4.6.4",
     "yargs": "^17.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/thiagomorales/firebase-admin-node/issues"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }
