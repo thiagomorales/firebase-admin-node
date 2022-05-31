@@ -397,7 +397,7 @@ describe('Messaging', () => {
   });
 
   describe('send()', () => {
-    it('should throw given no message', () => {
+    it.only('should throw given no message', () => {
       expect(() => {
         messaging.send(undefined as any);
       }).to.throw('Message must be a non-null object');
