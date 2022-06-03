@@ -192,9 +192,6 @@ export interface RetryConfig {
 
   /** Maximum duration to wait before initiating a retry. */
   maxDelayInMillis: number;
-
-  /** Completely disable the retry strategy. */
-  disableRetry?: boolean;
 }
 
 /**
@@ -209,7 +206,6 @@ export function defaultRetryConfig(): RetryConfig {
     ioErrorCodes: ['ECONNRESET', 'ETIMEDOUT'],
     backOffFactor: 0.5,
     maxDelayInMillis: 60 * 1000,
-    disableRetry: false
   };
 }
 
