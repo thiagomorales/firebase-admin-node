@@ -503,7 +503,7 @@ class AsyncHttpCall {
 
     const timeout: number | undefined = this.config.timeout;
     const timeoutCallback: () => void = () => {
-      req.destroy()
+      req.destroy();
       this.rejectWithError(`timeout of ${timeout}ms exceeded`, 'ETIMEDOUT', req);
     };
     if (timeout) {
