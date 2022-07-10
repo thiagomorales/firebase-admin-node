@@ -495,7 +495,7 @@ class AsyncHttpCall {
 
     // Handle errors
     req.on('error', (err) => {
-      if (req.destroyed) {
+      if (req.aborted) {
         return;
       }
       this.enhanceAndReject(err, null, req);
@@ -503,7 +503,7 @@ class AsyncHttpCall {
 
     const timeout: number | undefined = this.config.timeout;
     const timeoutCallback: () => void = () => {
-      req.destroy();
+      req.abort();
       this.rejectWithError(`timeout of ${timeout}ms exceeded`, 'ETIMEDOUT', req);
     };
     if (timeout) {
@@ -519,7 +519,7 @@ class AsyncHttpCall {
   }
 
   private handleResponse(res: http.IncomingMessage, req: http.ClientRequest): void {
-    if (req.destroyed) {
+    if (req.aborted) {
       return;
     }
 
@@ -625,7 +625,7 @@ class AsyncHttpCall {
 
     respStream.on('error', (err) => {
       const req: http.ClientRequest | null = response.request;
-      if (req && req.destroyed) {
+      if (req && req.aborted) {
         return;
       }
       this.enhanceAndReject(err, null, req);
